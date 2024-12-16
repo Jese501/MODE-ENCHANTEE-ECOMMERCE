@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>Complete Register and Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+    .header {
+      background: linear-gradient(#ee4d2d, #ff7337);
+      color: white;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .logo img {
+      display: block;
+      width: 120px;
+      border-radius: 100px;
+    }
+    .search-bar {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      margin: 0 20px;
+      position: relative;
+    } 
+    .search-bar input {
+      width: 11000%;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      font-size: 16px;
+    }
+    .search-bar button {
+      background-color: #FFC107;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-bar button i {
+      font-size: 18px;
+    }
+    .nav-icons {
+      display: flex;
+      align-items: center;
+    }
+    .nav-icons a {
+      color: white;
+      font-size: 20px;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .nav-icons a:hover {
+      color: #FFC107;
+    }
+    .nav-icons .fa-shopping-cart {
+      position: relative;
+    }
+    .nav-icons .fa-shopping-cart::after {
+      content: "2";
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #FFC107;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+    .container2 {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      margin-top: 20px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+    input, select {
+      width: 95%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff7337;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color:#FFC107;
+    }
+    .message {
+      margin-top: 10px;
+      text-align: center;
+      color: #555;
+    }
+    .message a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    .message a:hover {
+      text-decoration: underline;
+    }
+    .error {
+      color: red;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    main{
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+    }
+    .footer {
+        background: #2f2d2e;
+        color: #cfc7c7;
+        font-size: 14px;
+        height: 200px;
+        width: 100%;
+        text-align: center;
+        margin-top: 70px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .footer a {
+        color: #cfc7c7; 
+        text-decoration: none;
+    }
+    .footer .container3 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    }
+    .footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    width: 100%;
+    }
+    .footer-col-2, .footer-col-3, .footer-col-4 {
+    min-width: 200px;
+    padding: 10px;
+    text-align: left;
+    }
+    .footer-col-2 img {
+    width: 150px;
+    margin-bottom: 20px;
+    }
+    .footer-col-3 .list {
+    list-style-type: none;
+    padding-left: 0;
+    }
+    .footer-col-3 .list li a {
+    color: #cfc7c7; 
+    text-decoration: none; 
+    transition: color 0.3s;
+    }
+    .footer-col-3 .list li a:hover {
+    color: #ff5733; 
+    }
+    .social-icons a {
+    margin: 0 15px;
+    font-size: 30px;
+    color: #fff;
+    transition: transform 0.3s, color 0.3s;
+    }
+    .social-icons a:hover {
+    transform: scale(1.2);
+    color: #ff5733; 
+    }
+    hr {
+    border-color: #8a8a8a;
+    }
+    .copyright {
+    font-size: 12px;
+    color: #8a8a8a;
+    text-align: center;
+    margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <a href="index.html"><img src="images/mode enchantee logo.png" alt="Mode Enchantée Logo"></a>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search for products, brands, and more">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-icons">
+          <a href="#"><i class="fas fa-bell"></i></a>
+          <a href="account.html"><i class="fas fa-user"></i></a>
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+
+  <!-- Registration Form -->
+  <div class="container2" id="register-container">
+    <h2>Register</h2>
+    <div class="error" id="error-message"></div>
+
+    <input type="text" id="full-name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="date" id="birthday" required>
+    <input type="text" id="address" placeholder="Complete Address" required>
+
+    <button onclick="showNextStep()">Next</button>
+  <div class="message">
+    Already have an account? <a href="#" onclick="showLogin()">Login</a>
+  </div>
+  </div>
+  
+
+  <!-- Account Creation Form -->
+  <div class="container2" id="account-container" style="display: none;">
+    <h2>Create Account</h2>
+    <div class="error" id="account-error-message"></div>
+
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+
+    <button onclick="register()">Register</button>
+    <div class="message">Already have an account? <a href="#" onclick="showLogin()">Login</a></div>
+  </div>
+
+  <!-- Login Form -->
+  <div class="container2" id="login-container" style="display: none;">
+    <h2>Login</h2>
+    <input type="text" id="login-username" placeholder="Username" required>
+    <input type="password" id="login-password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <div class="message">Don't have an account? <a href="#" onclick="showRegister()">Register</a></div>
+  </div>
+</main>
+<div class="footer">
+  <div class="container3">
+      <div class="row">
+          <!-- Logo Section -->
+          <div class="footer-col-2">
+              <img src="images/mode enchantee logo.png" alt="Mode Enchantee Logo">
+          </div>
+          
+          <!-- Contact Us Section -->
+          <div class="footer-col-2 contact-us">
+              <h1>Contact Us</h1> 
+              <p>Email: <a href="mailto:castillojese78@gmail.com">castillojese78@gmail.com</a></p>
+              <p>Phone: <a href="tel:+639104467994">09104467994</a></p>
+              <p>Address: UCPT</p>
+          </div>
+          
+          <!-- Quick Links Section -->
+          <div class="footer-col-3">
+              <h1>Quick Links</h1>
+              <ul class="list">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="products.html">Products</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="account.html">Account</a></li>
+              </ul>
+          </div>
+          
+          <!-- Follow Us Section -->
+          <div class="footer-col-4">
+              <h1>Follow Us</h1>
+              <div class="social-icons">
+                  <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              </div>
+          </div>
+      </div>
+      <hr>
+      <p class="copyright">&copy; 2024 - ModeEnchantee | Fashion</p>
+  </div>
+</div>
+  <script>
+    // Show Login Form
+    function showLogin() {
+      document.getElementById('register-container').style.display = 'none';
+      document.getElementById('account-container').style.display = 'none';
+      document.getElementById('login-container').style.display = 'block';
+    }
+
+    // Show Register Form
+    function showRegister() {
+      document.getElementById('login-container').style.display = 'none';
+      document.getElementById('account-container').style.display = 'none';
+      document.getElementById('register-container').style.display = 'block';
+    }
+
+    // Show Next Step for Account Creation
+    function showNextStep() {
+      const fullName = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const birthday = document.getElementById('birthday').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const errorMessage = document.getElementById('error-message');
+
+      errorMessage.textContent = '';
+
+      if (!fullName || !email || !phone || !birthday || !address) {
+        errorMessage.textContent = 'All fields are required!';
+        return;
+      }
+
+      document.getElementById('register-container').style.display = 'none';
+      document.getElementById('account-container').style.display = 'block';
+    }
+
+    // Register Functionality
+    function register() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirm-password').value.trim();
+      const accountErrorMessage = document.getElementById('account-error-message');
+
+      accountErrorMessage.textContent = '';
+
+      if (!username || !password || !confirmPassword) {
+        accountErrorMessage.textContent = 'All fields are required!';
+        return;
+      }
+      if (password !== confirmPassword) {
+        accountErrorMessage.textContent = 'Passwords do not match!';
+        return;
+      }
+
+      const fullName = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const birthday = document.getElementById('birthday').value.trim();
+      const address = document.getElementById('address').value.trim();
+
+      const user = { fullName, email, phone, birthday, address, username, password };
+      localStorage.setItem('user', JSON.stringify(user));
+      alert('Registration successful! Please log in.');
+      showLogin();
+    }
+
+    // Login Functionality
+    function login() {
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (storedUser && username === storedUser.username && password === storedUser.password) {
+        alert('Login successful! Welcome, ' + storedUser.fullName + '!');
+      } else {
+        alert('Invalid username or password.');
+      }
+    }
+  </script>
+</body>
+</html>
+

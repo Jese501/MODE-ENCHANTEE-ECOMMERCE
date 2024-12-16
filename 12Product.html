@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - ModeEnchantee | Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/icon LM.png" type="image/x-icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background: linear-gradient(#ee4d2d, #ff7337);
+            color: white;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        } 
+        .logo img {
+            display: block;
+            width: 120px;
+            border-radius: 100px;
+        }
+        .search-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+            position: relative;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #FF5722;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-bar button {
+            background-color: #FFC107; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button i {
+            font-size: 16px;
+        }
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+        .nav-icons a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .nav-icons a:hover {
+            color: #FFC107;
+        }
+        .nav-icons .fa-shopping-cart {
+            position: relative;
+        }
+        .nav-icons .fa-shopping-cart::after {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FFC107;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+        /* Single Product Page */
+        .small-container {
+            max-width: 1170px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .single-product {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .col-2 {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .col-2 img {
+            width: 100%;
+        }
+
+        .small-img-row {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .small-img-col {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .small-img-col img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .col-2 h1 {
+            font-size: 30px;
+            color: #333;
+        }
+
+        .col-2 h4 {
+            font-size: 22px;
+            color: #888;
+            margin: 10px 0;
+        }
+
+        .col-2 select,
+        .col-2 input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .col-2 input {
+            width: 80px;
+            margin-right: 10px;
+        }
+
+        .button {
+            background-color: #FFD700;
+            color: #1a1a1a;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #f1c40f;
+        }
+
+        .row-2 {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .row-2 a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .row-2 a:hover {
+            text-decoration: underline;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between; 
+            gap: 20px 0; 
+            flex-wrap: wrap;
+        }
+        .col-4 {
+            flex: 1 1 22%;
+            text-align: center;
+            box-sizing: border-box; 
+        }
+        .col-4 img {
+            width: 100%; 
+            height: auto;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: left;
+            gap: 5px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .star {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        .star:hover,
+        .star:hover ~ .star {
+            color: #f1c80d;
+        }
+        .star.selected,
+        .star.selected ~ .star {
+            color: #f1c80d;
+        }
+        #rating-value {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #666;
+        }
+        .rating i {
+            color: #FFD700;
+        }
+        .rating i:hover {
+            color: #FFD700;
+        }
+        .rating i.fa-star-o {
+            color: #ddd; 
+        }
+        /*---Footer*/
+        .footer {
+            background: #2f2d2e;
+            color: #cfc7c7;
+            font-size: 14px;
+            text-align: center; 
+        } 
+        .footer a {
+            color: #cfc7c7;
+        }
+        .footer .container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center; 
+        }
+        .footer .row {
+            display: flex;
+            justify-content: center; 
+            width: 100%;
+        }
+        .footer-col-2, .footer-col-3, .footer-col-4 {
+            min-width: 250px;
+            padding: 10px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .footer-col-2 img {
+            width: 150px;
+            margin-top: 30px;
+        }
+        .footer-col-3 .list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .footer-col-3 .list li a {
+            color: #cfc7c7; 
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-col-3 .list li a:hover {
+            color: #ff5733; 
+        }
+        .social-icons a {
+            margin: 0 15px;
+            font-size: 30px;
+            color: #fff;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: #ff5733; 
+        }
+        hr {
+            border-color: #8a8a8a;
+        }
+        .copyright {
+            font-size: 12px;
+            color: #8a8a8a;
+            text-align: center;
+            margin-top: 5px;
+        }
+</style>
+
+</head>
+<body>
+     <!----Header Section--->
+     <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="images/mode enchantee logo.png" width="120px" alt="Mode Enchantée Logo"></a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products, brands, and more">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="account.html"><i class="fas fa-user"></i></a>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="small-container single-product">
+        <div class="col-2">
+            <img src="images/PRODUCT12.webp" width="100%" id="ProductImg">
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="images/PRODUCT12.webp" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="images/PRODUCT12.2.webp" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="images/PRODUCT12.3.webpbp" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="images/PRODUCT12.4.webp" width="100%" class="small-img">
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-2">
+            <h1>Mark Polo Shirt</h1>
+            <h4>P350.00</h4>
+            <select>
+                <option>Select Size</option>
+                <option>XL</option>
+                <option>Large</option>
+                <option>Medium</option>
+                <option>Small</option>
+            </select>
+            <input type="number" value="1">
+            <a href="cart.html" class="button">Add to Cart</a>
+
+            <div class="comment-section">
+                <h3>Rate This Product</h3>
+                <div class="star-rating">
+                    <span class="star" data-value="5">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="1">&#9733;</span>
+                </div>
+                <p id="rating-value">No rating yet</p>
+                <h3>Leave a Comment</h3>
+                <textarea placeholder="Write your comment here..." rows="4"></textarea>
+                <button class="button">Submit</button>
+            </div>
+        </div>
+    </div>
+
+<div class="small-container">
+    <div class="row row-2">
+        <h2>Recommend Products</h2>
+        <a href="products.html"><p class="view">View More</p></a>
+    </div>
+</div>
+
+<!---Product--->
+<div class="small-container">
+    <div class="row">
+        <div class="col-4">
+            <a href="4Product.html"><img src="images/PRODUCT4.webp"></a>
+            <h4>Pure Cotton Formal Shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p>550.00</p>
+        </div>
+        <div class="col-4">
+            <a href="8Product.html"><img src="images/PRODUCT8.webp"></a>
+            <h4>Crop Knitwear Cardigan</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>450.00</p>
+        </div>
+        <div class="col-4">
+            <a href="9Product.html"><img src="images/PRODUCT9.webp"></a>
+            <h4>Stretch fabric super slim-fit suit trousers </h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p>500.00</p>
+        </div>
+        <div class="col-4">
+            <a href="16Product.html"><img src="images/PRODUCT16.webp"></a>
+            <h4>Parachute Trousers</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <p>P350.00</p>
+        </div>
+    </div>
+
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-2">
+                <img src="images/mode enchantee logo.png" alt="Mode Enchantee Logo">
+            </div>
+            
+            <!-- Contact Us Section -->
+            <div class="footer-col-2 contact-us">
+                <h1>Contact Us</h1> 
+                <p>Email: <a href="mailto:castillojese78@gmail.com">castillojese78@gmail.com</a></p>
+                <p>Phone: <a href="tel:+639104467994">09104467994</a></p>
+                <p>Address: UCPT</p>
+            </div>
+            
+            <!-- Quick Links Section -->
+            <div class="footer-col-3">
+                <h1>Quick Links</h1>
+                <ul class="list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </div>
+            
+            <!-- Follow Us Section -->
+            <div class="footer-col-4">
+                <h1>Follow Us</h1>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">&copy; 2024 - ModeEnchantee | Fashion</p>
+    </div>
+</div>
+<script>
+    // Star Rating Logic
+    const stars = document.querySelectorAll('.star');
+    const ratingValue = document.getElementById('rating-value');
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const rating = star.getAttribute('data-value');
+            updateStarRating(rating);
+        });
+    });
+
+    function updateStarRating(rating) {
+        stars.forEach(star => {
+            if (star.getAttribute('data-value') <= rating) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
+        });
+        ratingValue.textContent = `Rating: ${rating} star${rating > 1 ? 's' : ''}`;
+    }
+
+    // Comment Submission Logic
+    const submitCommentButton = document.getElementById('submit-comment');
+    const commentTextarea = document.getElementById('comment');
+    const submittedComments = document.getElementById('submitted-comments');
+
+    submitCommentButton.addEventListener('click', () => {
+        const comment = commentTextarea.value;
+        if (comment.trim()) {
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.textContent = comment;
+            submittedComments.appendChild(newComment);
+            commentTextarea.value = ''; // Clear the textarea
+        }
+    });
+</script>   
+<script src="javascript/toggle.js"></script>
+<script src="javascript/cart.js"></script> 
+</body>
+</html>
